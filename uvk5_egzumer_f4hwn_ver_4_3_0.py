@@ -3140,16 +3140,19 @@ class UVK5RadioEgzumer(chirp_common.CloneModeRadio):
             radio_setting = RadioSetting(name, "Off", val)
             radio_setting_group.append(radio_setting)
 
-        radio_setting_group = RadioSettingGroup("mic_calibration",
-                                                "Microphone Sensitivity")
-        calibration.append(radio_setting_group)
+        ## Mic gain values (0-31) are hardcoded in gMicGain_dB2,
+        ## this setting is ignored.
+        ##
+        # radio_setting_group = RadioSettingGroup("mic_calibration",
+        #                                         "Microphone Sensitivity")
+        # calibration.append(radio_setting_group)
 
-        for lvl in range(0, 5):
-            name = "_mem.cal.micLevel[" + str(lvl) + "]"
-            tempval = min_max_def(eval(name), 0, 31, 31)
-            val = RadioSettingValueInteger(0, 31, tempval)
-            radio_setting = RadioSetting(name, "Level " + str(lvl), val)
-            radio_setting_group.append(radio_setting)
+        # for lvl in range(0, 5):
+        #     name = "_mem.cal.micLevel[" + str(lvl) + "]"
+        #     tempval = min_max_def(eval(name), 0, 31, 31)
+        #     val = RadioSettingValueInteger(0, 31, tempval)
+        #     radio_setting = RadioSetting(name, "Level " + str(lvl), val)
+        #     radio_setting_group.append(radio_setting)
 
         radio_setting_group = RadioSettingGroup("other_calibration", "Other")
         calibration.append(radio_setting_group)
